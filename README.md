@@ -1,4 +1,6 @@
-# Hyprland useful borders
+# Hyprland border actions
+
+_`general:resize_on_border` must be set to true for this plugin to work_
 
 This plugin extends the `general:resize_on_border` feature:
 

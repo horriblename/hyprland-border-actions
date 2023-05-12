@@ -4,7 +4,7 @@ version = "0.1.0"
 author = "horriblename"
 
 [example.build]
-output = "build/libhyprland-useful-borders.so"
+output = "build/libborder-actions.so"
 steps = [
     "meson setup build",
 	 "ninja -C build"

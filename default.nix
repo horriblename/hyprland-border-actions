@@ -4,7 +4,7 @@
   hyprland,
 }:
 stdenv.mkDerivation {
-  pname = "hyprland-useful-borders";
+  pname = "hyprland-border-actions";
   version = "0.1";
   src = ./.;
 
@@ -13,7 +13,7 @@ stdenv.mkDerivation {
   buildInputs = [hyprland] ++ hyprland.buildInputs;
 
   meta = with lib; {
-    homepage = "https://github.com/horriblename/hyprland-useful-borders";
+    homepage = "https://github.com/horriblename/hyprland-border-actions";
     description = "Hyprland plugin to make borders more useful with a mouse.";
     license = licenses.bsd3;
     platforms = platforms.linux;

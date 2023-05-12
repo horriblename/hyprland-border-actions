@@ -1,4 +1,4 @@
-project('hyprland-useful-borders', 'cpp', 'c',
+project('hyprland-border-actions', 'cpp', 'c',
   version: '0.0.1',
   default_options: ['buildtype=release'],
 )
@@ -12,7 +12,7 @@ else
   error('Could not configure current C++ compiler (' + cpp_compiler.get_id() + ' ' + cpp_compiler.version() + ') with required C++ standard (C++23)')
 endif
 
-shared_module(meson.project_name(), 'src/main.cpp',
+shared_module('border-actions', 'src/main.cpp',
   cpp_args: ['-DWLR_USE_UNSTABLE'],
   dependencies: [
     dependency('hyprland'),
