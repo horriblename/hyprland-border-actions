@@ -1,10 +1,11 @@
 [example]
-description = "Example plugin"
-version = "1.0.0"
-author = "YOU"
+description = "Hyprland plugin to make borders more useful with a mouse"
+version = "0.1.0"
+author = "horriblename"
 
 [example.build]
-output = "example.so"
+output = "build/libhyprland-useful-borders.so"
 steps = [
-    "make all",
+    "meson setup build",
+	 "ninja -C build"
 ]
