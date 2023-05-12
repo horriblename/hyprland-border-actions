@@ -21,10 +21,9 @@ APICALL EXPORT std::string PLUGIN_API_VERSION() {
 void hkMouseBindDummy(void* thisptr, std::string) {}
 
 void hkResizeWithBorder(void* thisptr, wlr_pointer_button_event* e) {
-    std::string button_state = e->state == WLR_BUTTON_PRESSED ? "1" : "0";
     switch (e->button) {
         case 273: // right click
-            g_pKeybindManager->m_mDispatchers["mouse"](button_state + "movewindow");
+            g_pKeybindManager->m_mDispatchers["mouse"]((e->state == WLR_BUTTON_PRESSED ? "1" : "0") + std::string("movewindow"));
             break;
         case 274: // middle click
             if (e->state == WLR_BUTTON_PRESSED)
