@@ -7,3 +7,5 @@ This plugin extends the `general:resize_on_border` feature:
 - Middle Click to close window
 
 Maybe implemented in the future:
+
+- scroll wheel to switch window in groups
