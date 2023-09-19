@@ -11,7 +11,7 @@
     withPkgsFor = fn: nixpkgs.lib.genAttrs (builtins.attrNames hyprland.packages) (system: fn system nixpkgs.legacyPackages.${system});
   in {
     packages = withPkgsFor (system: pkgs: {
-      default = pkgs.callPackage ./default.nix {inherit (hyprland.packages.${system}) hyprland;};
+      default = pkgs.callPackage ./default.nix {inherit (hyprland.packages.${system}) hyprland; stdenv = pkgs.gcc13Stdenv;};
     });
 
     devShells = withPkgsFor (system: pkgs: {
