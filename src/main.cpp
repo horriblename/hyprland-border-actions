@@ -5,6 +5,7 @@
 
 #include <hyprland/src/Window.hpp>
 #include <hyprland/src/Compositor.hpp>
+#include <hyprland/src/managers/input/InputManager.hpp>
 
 #include <unistd.h>
 #include <thread>
@@ -25,10 +26,24 @@ void hkResizeWithBorder(void* thisptr, wlr_pointer_button_event* e) {
         case 273: // right click
             g_pKeybindManager->m_mDispatchers["mouse"]((e->state == WLR_BUTTON_PRESSED ? "1" : "0") + std::string("movewindow"));
             break;
-        case 274: // middle click
-            if (e->state == WLR_BUTTON_PRESSED)
-                g_pKeybindManager->m_mDispatchers["killactive"]("");
+
+        case 274: { // middle click
+
+            if (e->state != WLR_BUTTON_PRESSED) {
+                break;
+            }
+
+            const auto PWINDOW = g_pCompositor->vectorToWindowIdeal(g_pInputManager->getMouseCoordsInternal());
+
+            if (!PWINDOW) {
+                Debug::log(ERR, "[border-actions] Cannot close invalid window!");
+                break;
+            }
+
+            // kill the mf
+            g_pKeybindManager->m_mDispatchers["closewindow"](std::format("address:0x{:x}", PWINDOW));
             break;
+        }
         default: (*(origResizeWithBorder)g_pResizeWithBorderHook->m_pOriginal)(thisptr, e); break;
     }
 }
