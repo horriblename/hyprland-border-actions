@@ -17,6 +17,7 @@
     devShells = withPkgsFor (system: pkgs: {
       default = pkgs.mkShell {
         name = "hyprland-plugins";
+        nativeBuildInputs = [pkgs.gcc13];
         buildInputs = [hyprland.packages.${system}.hyprland];
         inputsFrom = [hyprland.packages.${system}.hyprland];
       };
