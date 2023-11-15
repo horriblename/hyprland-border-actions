@@ -1,6 +1,6 @@
 [border-actions]
 description = "Hyprland plugin to make borders more useful with a mouse"
-version = "0.1.0"
+version = "1.0"
 author = "horriblename"
 
 [border-actions.build]
